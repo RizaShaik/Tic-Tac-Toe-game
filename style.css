@@ -23,13 +23,14 @@ body{
     align-items: center;
     gap: 1.75vmin;
  }
- .entrybox{
+ .box{
     height: 15vmin;
     width: 15vmin;
     border-radius: 0.75rem;
     border: none;
     font-size: 8vmin;
-    color: #347fc4
+    color: #347fc4;
+    background-color: #ffd29d;
  }
  #reset{
    padding: 1rem;
