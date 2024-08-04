@@ -40,3 +40,26 @@ body{
    color: #fff;
    font-size: 1rem;
  }
+ #new-game{
+   padding: 1rem;
+   border-radius: 0.75rem;
+   border: none;
+   background-color: #2f4858;
+   color: #fff;
+   font-size: 1rem;
+ }
+#win-msg{
+   color: #f2e94e;
+   font-size: 8vmin;
+}
+.notify{
+   height: 100vmin;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   flex-direction: column;
+   gap: 3rem;
+}
+.hide{
+   display: none;
+}
