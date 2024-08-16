@@ -1,12 +1,15 @@
 let boxes = document.querySelectorAll(".box");
+let gameContainer = document.querySelector(".game");
 let reset_Btn = document.querySelector("#reset");
 let newgame_Btn = document.querySelector("#new-game");
 let notifyBox = document.querySelector(".notify");
 let winMsg = document.querySelector("#win-msg");
 let turnO = true;
+let count = 0;
 
 const resetGame = () => {
     turnO = true;
+    count = 0;
     enableBoxes();
     notifyBox.classList.add("hide");
 }
@@ -25,14 +28,27 @@ boxes.forEach((box) => {
        if(turnO){
         box.innerText = "O";
         turnO = false;
+        box.style.color = "#5d737e";
        }else{
         box.innerText = "X";
         turnO = true;
        }
        box.disabled = true;
-        checkWinner();
+       count++;
+       let winner =  checkWinner();
+       if(count === 9 && !winner){
+        gameDraw(); 
+     }
     });
 });
+
+
+const gameDraw = () => {
+    winMsg.innerText = `Draw`;
+    notifyBox.classList.remove("hide");
+    disableBoxes();
+};
+
 
 const disableBoxes = () => {
     for(let box of boxes){
@@ -46,6 +62,7 @@ const enableBoxes = () => {
         box.innerText = "";
     }
 };
+
 
 const displayWinner = (winner) => {
     winMsg.innerText = `Congratulations! Winner is ${winner}`;
@@ -61,7 +78,6 @@ const checkWinner = () => {
 
         if (pos1Val != "" && pos2Val != "" && pos3Val != "") {
             if (pos1Val === pos2Val && pos2Val === pos3Val) {
-                console.log("Winner",pos1Val);
                 displayWinner(pos1Val);
             }
         }
